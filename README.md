@@ -1,6 +1,8 @@
 # CONICAL-CITY-MODEL-
 FOR a school &amp; college project in which we use conical shapes properties in architecture to create a High strength structures, it's for knowledge purpose 
 <br>
+<br>
+
 You are an expert frontend engineer, UI/UX designer, and Three.js developer. Create a highly polished, professional educational website called “Conic City: Geometry in Architecture”.
 
 PROJECT VISION
