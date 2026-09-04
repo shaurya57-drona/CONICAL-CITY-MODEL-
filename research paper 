@@ -1,0 +1,673 @@
+```
+🏛️ CONIC CITY: GEOMETRY IN ARCHITECTURE - COMPLETE PRODUCTION PROMPT
+================================================================================
+
+STATUS: READY FOR DEVELOPMENT
+TARGET: Math-heavy judges at school science exhibition
+DEPLOYMENT: Vercel (auto-deploy on git push)
+TECH STACK: React + Vite + Three.js + Dark CSS
+VISIT TIME: 2-4 minutes per judge
+
+================================================================================
+SECTION 1: PROJECT OVERVIEW & CONCEPT
+================================================================================
+
+PROJECT VISION:
+Create an interactive educational website showcasing how mathematical conic 
+sections (circle, parabola, ellipse, hyperbola) appear in real-world architecture.
+
+CORE IDEA:
+Each conic section gets a dedicated page with:
+1. A 3D mathematical surface (the actual geometry rendered in Three.js)
+2. 10 real architectural buildings that USE that shape
+3. Interactive features (drag rotate, click highlight, zoom)
+4. Detailed descriptions (300-500 words per building)
+5. Mathematical equations + engineering explanations
+6. Wikipedia integration for real building info
+
+JUDGE EXPERIENCE:
+- Click homepage → choose shape → see gorgeous 3D geometry
+- Interact with 3D (drag to rotate, scroll to zoom, click building for info)
+- Read about real buildings using that shape
+- Compare two buildings side-by-side
+- Toggle between English and Hindi
+- Experience smooth, professional, bug-free interface
+
+================================================================================
+SECTION 2: COMPLETE FEATURE BREAKDOWN
+================================================================================
+
+HOMEPAGE (/)
+- Hero section: "CONIC CITY" title + tagline
+- Description: "Explore how mathematical conic sections shape iconic buildings"
+- 4 large shape cards (Circle, Parabola, Ellipse, Hyperbola)
+  * Each card: colored icon + shape name + "Explore" button
+  * Click card → navigate to shape page
+- "How it works" section with 4 steps:
+  1. Choose a Shape
+  2. Explore Architecture
+  3. Learn the Math
+  4. Compare Buildings
+- Footer with credits + GitHub link
+
+CIRCLE PAGE (/circle)
+- Back button to home
+- Title: "CIRCLE"
+- 3D Scene: Circular disc/cylinder (rotates, interactive)
+- Left panel: 
+  * Equation: x² + y² = r²
+  * Engineering insight: Why circles are used in architecture
+- Right panel: 4 building cards:
+  1. Pantheon (Rome, 126 AD) - Perfect circular dome
+  2. St. Paul's Cathedral (London, 1697 AD) - Whispering Gallery
+  3. Sri Ranganathaswamy Temple (India, 14th C) - Concentric circles
+  4. Beijing National Stadium (2008 AD) - Modern circular seating
+- Each building card has:
+  * Name + location + year
+  * 300-500 word description
+  * Mathematical equation
+  * "Compare" button (for comparison feature)
+  * "Read on Wikipedia" link
+
+PARABOLA PAGE (/parabola)
+- Same structure as Circle, with:
+- 3D Scene: Parabolic surface (U-shaped curve)
+- Equation: y = ax² + bx + c
+- 4 buildings:
+  1. Golden Gate Bridge (SF, 1937 AD) - Suspension cables
+  2. Gateway Arch (St. Louis, 1965 AD) - Inverted parabola
+  3. Arecibo Observatory (Puerto Rico, 1963 AD) - Satellite dish
+  4. Versailles Fountains (France, 1668 AD) - Water trajectory
+
+ELLIPSE PAGE (/ellipse)
+- Same structure, with:
+- 3D Scene: Ellipsoid (oval 3D shape)
+- Equation: x²/a² + y²/b² = 1
+- 4 buildings:
+  1. Colosseum (Rome, 80 AD) - Elliptical amphitheater
+  2. Circus Maximus (Rome, 200 BC) - Elliptical racetrack
+  3. Whispering Gallery (St. Paul's, London, 1697 AD) - Acoustic anomaly
+  4. Channel Tunnel (UK-France, 1994 AD) - Elliptical cross-section
+
+HYPERBOLA PAGE (/hyperbola)
+- Same structure, with:
+- 3D Scene: Hyperboloid surface (double-curved)
+- Equation: x²/a² - y²/b² = 1
+- 4 buildings:
+  1. Power Plant Cooling Tower (1920s) - Industrial hyperboloid
+  2. CN Tower (Toronto, 1976 AD) - Hyperbolic curves
+  3. Intze Water Tank (Global, 1896 AD) - Pure hyperboloid
+  4. Modern Hyperbolic Shell (Contemporary) - Thin-shell architecture
+
+COMPARE PAGE (/compare)
+- Horizontal split on desktop (Building A left | Building B right)
+- Stacked on mobile (Building A top, Building B bottom)
+- Comparison rows:
+  * Shape type
+  * Mathematical equation
+  * Architectural function
+  * Engineering insight
+  * Best context for use
+- Conclusion box (200-300 words explaining differences)
+- "Choose Different Buildings" button (resets selection)
+- Works after clicking "Compare" on Building A, then Building B
+
+LANGUAGE SWITCHER
+- Position: Header top-right
+- Display: "EN / HI" toggle
+- Functionality:
+  * Click to toggle between English and Hindi
+  * Saves to localStorage
+  * Instantly updates all text on page
+  * All content translated except building names (proper nouns)
+- All UI, buttons, descriptions, equations explanations in both languages
+
+RESPONSIVE DESIGN
+- Mobile (320px+): Full feature parity, single columns, touch-friendly
+- Tablet (640px+): 2-column grids, optimized spacing
+- Desktop (1024px+): 4-column grids, full layout
+- 3D Canvas:
+  * Mobile: 350px height, simplified geometry
+  * Desktop: 500px height, full detail
+  * Always responsive, no blur, retina-quality
+  * No horizontal scrolling on any device
+
+================================================================================
+SECTION 3: TECHNICAL ARCHITECTURE
+================================================================================
+
+TECHNOLOGY STACK:
+- Frontend: React 18 (components, state, routing)
+- Build: Vite (fast dev, optimized production)
+- 3D Rendering: Three.js r128 (mathematical surfaces + lighting)
+- Styling: CSS3 vanilla (dark theme, responsive, animations)
+- Routing: React Router v6 (client-side navigation, SPA)
+- State: React Context (language preference, compare logic)
+- Storage: localStorage (language), sessionStorage (compare selection)
+- External API: Wikipedia (via Vercel Edge Function)
+- Deployment: Vercel (auto-deploy on git push)
+- VCS: GitHub (source code + deployment trigger)
+
+FOLDER STRUCTURE:
+CONICAL-CITY-MODEL/
+├── index.html
+├── package.json
+├── vite.config.js
+├── vercel.json
+├── .gitignore
+├── .env.example
+└── src/
+    ├── main.jsx
+    ├── App.jsx (main router + language context)
+    ├── index.css (global styles + CSS variables)
+    ├── pages/
+    │   ├── Home.jsx
+    │   ├── ShapePage.jsx (dynamic: circle/parabola/ellipse/hyperbola)
+    │   └── ComparePage.jsx
+    ├── components/
+    │   ├── Header.jsx
+    │   ├── Footer.jsx
+    │   ├── ThreeScene.jsx
+    │   ├── BuildingCard.jsx
+    │   └── CompareCard.jsx
+    ├── scenes/
+    │   ├── circleScene.js
+    │   ├── parabolaScene.js
+    │   ├── ellipseScene.js
+    │   ├── hyperbolaScene.js
+    │   └── sceneManager.js
+    ├── data/
+    │   └── buildingsData.js (all 16 buildings)
+    ├── utils/
+    │   ├── wikipedia.js
+    │   ├── lang.js
+    │   ├── compare.js
+    │   └── analytics.js
+    ├── api/
+    │   └── wikipedia-proxy.js (Vercel Edge Function)
+    └── styles/
+        ├── pages/
+        │   ├── Home.css
+        │   ├── ShapePage.css
+        │   └── ComparePage.css
+        └── components/
+            ├── Header.css
+            ├── Footer.css
+            ├── BuildingCard.css
+            └── ThreeScene.css
+
+================================================================================
+SECTION 4: SETUP & INSTALLATION (PROMPT 1)
+================================================================================
+
+STEP 1: CREATE PROJECT
+Open terminal and run:
+
+npm create vite@latest CONICAL-CITY-MODEL -- --template react
+cd CONICAL-CITY-MODEL
+npm install
+npm install three
+npm install react-router-dom
+
+STEP 2: CREATE FOLDERS IN src/
+Right-click on "src" folder, create these folders:
+- src/pages
+- src/components
+- src/scenes
+- src/data
+- src/utils
+- src/api
+- src/styles
+
+Inside src/styles, create subfolders:
+- src/styles/pages
+- src/styles/components
+
+STEP 3: CREATE CONFIG FILES
+
+File: vite.config.js (root level)
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    strictPort: false,
+  },
+  build: {
+    outDir: 'dist',
+    minify: 'terser',
+  }
+})
+```
+
+File: vercel.json (root level)
+```json
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": "dist"
+}
+```
+
+File: .gitignore (root level)
+```
+node_modules/
+dist/
+.env.local
+.DS_Store
+*.log
+.vercel
+```
+
+File: .env.example (root level)
+```
+VITE_APP_NAME=Conic City
+VITE_API_URL=https://your-vercel-app.vercel.app/api
+VITE_WIKIPEDIA_PROXY=/api/wikipedia
+```
+
+STEP 4: VERIFY SETUP
+Run: npm run dev
+
+You should see:
+> Local: http://localhost:5173/
+
+Open that URL in browser. You'll see React default page (will be replaced when you add components).
+
+================================================================================
+SECTION 5: REACT ROUTING & COMPONENTS (PROMPT 2)
+================================================================================
+
+File: src/App.jsx
+
+```javascript
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import ShapePage from './pages/ShapePage';
+import ComparePage from './pages/ComparePage';
+
+// Language Context for global state
+const LanguageContext = createContext();
+
+export function useLanguage() {
+  return useContext(LanguageContext);
+}
+
+export default function App() {
+  // Load language preference from localStorage on mount
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('language') || 'en';
+  });
+
+  // Save language to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
+
+  // Toggle between English and Hindi
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'hi' : 'en');
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+      <Router>
+        <div className="app-container">
+          <Header />
+          
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/circle" element={<ShapePage shape="circle" />} />
+              <Route path="/parabola" element={<ShapePage shape="parabola" />} />
+              <Route path="/ellipse" element={<ShapePage shape="ellipse" />} />
+              <Route path="/hyperbola" element={<ShapePage shape="hyperbola" />} />
+              <Route path="/compare" element={<ComparePage />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </main>
+
+          <Footer />
+        </div>
+      </Router>
+    </LanguageContext.Provider>
+  );
+}
+```
+
+File: src/components/Header.jsx
+```javascript
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../App';
+import '../styles/components/Header.css';
+
+const translations = {
+  en: {
+    logo: 'CONIC CITY',
+    home: 'Home',
+    circle: 'Circle',
+    parabola: 'Parabola',
+    ellipse: 'Ellipse',
+    hyperbola: 'Hyperbola'
+  },
+  hi: {
+    logo: 'कोनिक सिटी',
+    home: 'होम',
+    circle: 'वृत्त',
+    parabola: 'परवलय',
+    ellipse: 'दीर्घवृत्त',
+    hyperbola: 'अतिपरवलय'
+  }
+};
+
+export default function Header() {
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
+
+  return (
+    <header className="header">
+      <div className="header-content">
+        <Link to="/" className="logo">{t.logo}</Link>
+        
+        <nav className="nav">
+          <Link to="/" className="nav-link">{t.home}</Link>
+          <Link to="/circle" className="nav-link">{t.circle}</Link>
+          <Link to="/parabola" className="nav-link">{t.parabola}</Link>
+          <Link to="/ellipse" className="nav-link">{t.ellipse}</Link>
+          <Link to="/hyperbola" className="nav-link">{t.hyperbola}</Link>
+        </nav>
+
+        <button 
+          className="language-switcher"
+          onClick={toggleLanguage}
+          aria-label="Toggle language"
+        >
+          {language === 'en' ? 'EN / HI' : 'हिं / EN'}
+        </button>
+      </div>
+    </header>
+  );
+}
+```
+
+File: src/components/Footer.jsx
+```javascript
+import React from 'react';
+import { useLanguage } from '../App';
+import '../styles/components/Footer.css';
+
+const translations = {
+  en: {
+    credits: '© 2024 Conic City. Educational project exploring conic sections in architecture.',
+    github: 'GitHub',
+    vercel: 'Powered by Vercel'
+  },
+  hi: {
+    credits: '© 2024 कोनिक सिटी। वास्तुकला में शंकु खंडों की खोज करने वाली शैक्षणिक परियोजना।',
+    github: 'गिटहब',
+    vercel: 'Vercel द्वारा संचालित'
+  }
+};
+
+export default function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        <p>{t.credits}</p>
+        <div className="footer-links">
+          <a href="https://github.com/shaurya57-drona/CONICAL-CITY-MODEL" target="_blank" rel="noopener noreferrer">
+            {t.github}
+          </a>
+          <span> • </span>
+          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+            {t.vercel}
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+```
+
+File: src/pages/Home.jsx
+```javascript
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../App';
+import '../styles/pages/Home.css';
+
+const translations = {
+  en: {
+    title: 'Conic City',
+    subtitle: 'Geometry in Architecture',
+    description: 'Explore how mathematical conic sections shape the world\'s most iconic buildings.',
+    howItWorks: 'How It Works',
+    step1: 'Choose a Shape',
+    step1Desc: 'Select a conic section',
+    step2: 'Explore Architecture',
+    step2Desc: 'See real buildings',
+    step3: 'Learn the Math',
+    step3Desc: 'Understand equations',
+    step4: 'Compare Buildings',
+    step4Desc: 'Compare different shapes'
+  },
+  hi: {
+    title: 'कोनिक सिटी',
+    subtitle: 'वास्तुकला में ज्यामिति',
+    description: 'जानें कि गणितीय शंकु खंड दुनिया की सबसे प्रसिद्ध इमारतों को कैसे आकार देते हैं।',
+    howItWorks: 'यह कैसे काम करता है',
+    step1: 'एक आकार चुनें',
+    step1Desc: 'एक शंकु खंड चुनें',
+    step2: 'वास्तुकला का अन्वेषण करें',
+    step2Desc: 'वास्तविक इमारतें देखें',
+    step3: 'गणित सीखें',
+    step3Desc: 'समीकरणों को समझें',
+    step4: 'इमारतों की तुलना करें',
+    step4Desc: 'विभिन्न आकार तुलना करें'
+  }
+};
+
+const shapes = [
+  { name: 'circle', color: '#3b82f6', emoji: '⭕' },
+  { name: 'parabola', color: '#f97316', emoji: '∿' },
+  { name: 'ellipse', color: '#10b981', emoji: '⬭' },
+  { name: 'hyperbola', color: '#a855f7', emoji: '⧗' }
+];
+
+export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  return (
+    <div className="home">
+      <section className="hero">
+        <h1>{t.title}</h1>
+        <p className="subtitle">{t.subtitle}</p>
+        <p className="description">{t.description}</p>
+      </section>
+
+      <section className="shapes-grid">
+        {shapes.map(shape => (
+          <Link 
+            key={shape.name}
+            to={`/${shape.name}`}
+            className="shape-card"
+            style={{ '--shape-color': shape.color }}
+          >
+            <div className="shape-icon">{shape.emoji}</div>
+            <h2>{t[shape.name]}</h2>
+            <p>Explore {shape.name}</p>
+            <button className="explore-btn">Explore →</button>
+          </Link>
+        ))}
+      </section>
+
+      <section className="how-it-works">
+        <h2>{t.howItWorks}</h2>
+        <div className="steps-grid">
+          <div className="step">
+            <div className="step-number">1</div>
+            <h3>{t.step1}</h3>
+            <p>{t.step1Desc}</p>
+          </div>
+          <div className="step">
+            <div className="step-number">2</div>
+            <h3>{t.step2}</h3>
+            <p>{t.step2Desc}</p>
+          </div>
+          <div className="step">
+            <div className="step-number">3</div>
+            <h3>{t.step3}</h3>
+            <p>{t.step3Desc}</p>
+          </div>
+          <div className="step">
+            <div className="step-number">4</div>
+            <h3>{t.step4}</h3>
+            <p>{t.step4Desc}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+```
+
+File: src/pages/ShapePage.jsx
+```javascript
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../App';
+import ThreeScene from '../components/ThreeScene';
+import BuildingCard from '../components/BuildingCard';
+import { buildingsData } from '../data/buildingsData';
+import '../styles/pages/ShapePage.css';
+
+const translations = {
+  en: {
+    equation: 'Equation',
+    engineeringInsight: 'Engineering Insight',
+    buildings: 'Buildings',
+    backHome: '← Back to Home'
+  },
+  hi: {
+    equation: 'समीकरण',
+    engineeringInsight: 'इंजीनियरिंग अंतर्दृष्टि',
+    buildings: 'इमारतें',
+    backHome: '← होम पर वापस जाएं'
+  }
+};
+
+export default function ShapePage({ shape }) {
+  const { language } = useLanguage();
+  const navigate = useNavigate();
+  const t = translations[language];
+  
+  const buildings = buildingsData.filter(b => b.shape === shape);
+
+  return (
+    <div className="shape-page">
+      <button onClick={() => navigate('/')} className="back-btn">
+        {t.backHome}
+      </button>
+
+      <h1 className="shape-title">{shape.toUpperCase()}</h1>
+
+      <ThreeScene shape={shape} />
+
+      <div className="info-panel">
+        <div className="equation-box">
+          <h3>{t.equation}</h3>
+          <code>{buildings[0]?.equation}</code>
+        </div>
+        <div className="insight-box">
+          <h3>{t.engineeringInsight}</h3>
+          <p>{buildings[0]?.engineeringInsight}</p>
+        </div>
+      </div>
+
+      <section className="buildings-section">
+        <h2>{t.buildings}</h2>
+        <div className="buildings-grid">
+          {buildings.map(building => (
+            <BuildingCard 
+              key={building.id}
+              building={building}
+              shapeColor={getShapeColor(shape)}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function getShapeColor(shape) {
+  const colors = {
+    circle: '#3b82f6',
+    parabola: '#f97316',
+    ellipse: '#10b981',
+    hyperbola: '#a855f7'
+  };
+  return colors[shape];
+}
+```
+
+File: src/pages/ComparePage.jsx
+```javascript
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../App';
+import { buildingsData } from '../data/buildingsData';
+import '../styles/pages/ComparePage.css';
+
+const translations = {
+  en: {
+    comparison: 'Comparison',
+    shapeType: 'Shape Type',
+    equation: 'Equation',
+    function: 'Function',
+    engineering: 'Engineering Insight',
+    bestContext: 'Best Used For',
+    backToBuildings: 'Choose Different Buildings',
+    selectFirst: 'Select two buildings to compare'
+  },
+  hi: {
+    comparison: 'तुलना',
+    shapeType: 'आकार का प्रकार',
+    equation: 'समीकरण',
+    function: 'कार्य',
+    engineering: 'इंजीनियरिंग अंतर्दृष्टि',
+    bestContext: 'सर्वोत्तम प्रयोग',
+    backToBuildings: 'विभिन्न इमारतें चुनें',
+    selectFirst: 'तुलना करने के लिए दो इमारतें चुनें'
+  }
+};
+
+export default function ComparePage() {
+  const { language } = useLanguage();
+  const navigate = useNavigate();
+  const t = translations[language];
+
+  const [buildingA, setBuildingA] = useState(null);
+  const [buildingB, setBuildingB] = useState(null);
+
+  useEffect(() => {
+    const aId = sessionStorage.getItem('compareA');
+    const bId = sessionStorage.getItem('compareB');
+
+    if (aId) setBuildingA(buildingsData.find(b => b.id === aId));
+    if (bId) setBuildingB(buildingsData.find(b => b.id === bId));
+  }, []);
+
+  if (!buildingA || !buildingB) {
+ 
